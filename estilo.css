@@ -1,5 +1,5 @@
 
-/* ===== ESTILO GERAL =====  sla*/
+/* ===== ESTILO GERAL ===== */
 body {
     background: #202035;
     color: white;
@@ -30,7 +30,7 @@ p {
     box-shadow: 0 0 15px #00ffff55;
 }
 
-/* Linhas que dividem as faixas */
+/* Linhas das faixas */
 .linha {
     position: absolute;
     width: 2px;
@@ -47,14 +47,14 @@ p {
     left: 200px;
 }
 
-/* ===== CARROS ===== */
+/* ===== ESTILO DOS CARROS ===== */
 .carro {
     width: 44px;
     height: 70px;
     position: absolute;
     box-sizing: border-box;
-    border-radius: 7px 7px 4px 4px;
     border: 2px solid #aaa;
+    border-radius: 7px 7px 4px 4px;
     box-shadow: 0 2px 5px #000;
 }
 
@@ -63,8 +63,8 @@ p {
     left: 128px;
     top: 310px;
     color: white;
+
     background:
-        /* Para-choques */
         linear-gradient(
             to bottom,
             #999 0px,
@@ -75,7 +75,6 @@ p {
             #eee 67px,
             #888 67px
         ),
-        /* Carroceria quadrada */
         linear-gradient(
             to right,
             #777 0px,
@@ -99,46 +98,55 @@ p {
     width: 30px;
     height: 17px;
     box-sizing: border-box;
+
     background: linear-gradient(
         135deg,
         #526d7c,
         #182b38 60%,
         #718794
     );
+
     border: 2px solid #aaa;
     border-radius: 3px;
+
     box-shadow:
         0 25px 0 -1px #263b49,
         0 25px 0 1px #aaa;
 }
 
-/* ===== CARRO INIMIGO ===== */
+/* ===== CARRO INIMIGO VERMELHO ===== */
 #inimigo {
     left: 30px;
     top: -70px;
-    background: #ff0066;
-    color: #ff0066;
-    border-color: #ff9abc;
+
+    background: #ff0000;
+    color: #ff0000;
+    border-color: #ff7777;
+
     border-radius: 7px 7px 4px 4px;
 }
 
-/* Vidro do inimigo */
+/* Vidro do carro inimigo */
 #inimigo::before {
     background: #222;
-    border-color: #ffb0cc;
+    border-color: #ff7777;
 }
 
 /* ===== BOTÕES ===== */
 button {
     padding: 12px 20px;
     margin: 5px;
+
     font-size: 20px;
     font-weight: bold;
+
     cursor: pointer;
     color: #202035;
     background: #00ff88;
+
     border: none;
     border-radius: 8px;
+
     box-shadow: 0 3px 0 #009955;
     transition: transform 0.1s;
 }
@@ -160,7 +168,7 @@ button:active {
     margin-top: 15px;
 }
 
-/* ===== TELAS MENORES ===== */
+/* ===== TELAS PEQUENAS ===== */
 @media (max-width: 360px) {
     #pista {
         transform: scale(0.9);
