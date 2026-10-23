@@ -1,32 +1,41 @@
 
+/* ===== ESTILO GERAL ===== */
 body {
     background: #202035;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 15px;
 }
 
 h1 {
     color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
 }
 
-/* Pista dividida em três faixas de 100px. */
+p {
+    font-size: 16px;
+}
+
+/* ===== PISTA ===== */
 #pista {
     width: 300px;
     height: 400px;
-    background: #111;
+    background: #222;
     border: 3px solid cyan;
     margin: 20px auto;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 15px #00ffff55;
 }
 
-/* Linhas que separam as faixas. */
+/* Linhas que dividem as faixas */
 .linha {
     position: absolute;
     width: 2px;
     height: 100%;
-    background: #555;
+    background: #666;
     top: 0;
 }
 
@@ -38,42 +47,129 @@ h1 {
     left: 200px;
 }
 
-/* Aparência dos carros. */
+/* ===== CARROS ===== */
 .carro {
-    width: 40px;
+    width: 44px;
     height: 70px;
     position: absolute;
-    border-radius: 8px;
-    box-shadow: 0 0 12px currentColor;
+    box-sizing: border-box;
+    border-radius: 7px 7px 4px 4px;
+    border: 2px solid #aaa;
+    box-shadow: 0 2px 5px #000;
 }
 
-/* Janela dos carros. */
-.carro::before {
+/* ===== FIAT UNO MILLE DO JOGADOR ===== */
+#jogador {
+    left: 128px;
+    top: 310px;
+    color: white;
+    background:
+        /* Para-choques */
+        linear-gradient(
+            to bottom,
+            #999 0px,
+            #ddd 4px,
+            transparent 4px,
+            transparent 63px,
+            #bbb 63px,
+            #eee 67px,
+            #888 67px
+        ),
+        /* Carroceria quadrada */
+        linear-gradient(
+            to right,
+            #777 0px,
+            #eee 4px,
+            #fff 8px,
+            #eee 36px,
+            #bbb 40px,
+            #777 42px
+        );
+
+    border-color: #aaa;
+    border-radius: 6px 6px 4px 4px;
+}
+
+/* Vidros do Fiat Uno */
+#jogador::before {
     content: "";
     position: absolute;
-    width: 26px;
-    height: 20px;
-    background: #222;
-    top: 15px;
-    left: 7px;
+    top: 12px;
+    left: 5px;
+    width: 30px;
+    height: 17px;
+    box-sizing: border-box;
+    background: linear-gradient(
+        135deg,
+        #526d7c,
+        #182b38 60%,
+        #718794
+    );
+    border: 2px solid #aaa;
+    border-radius: 3px;
+    box-shadow:
+        0 25px 0 -1px #263b49,
+        0 25px 0 1px #aaa;
 }
 
-#jogador {
-    background: #00ff88;
-    color: #00ff88;
-    left: 130px;
-    top: 310px;
-}
-
+/* ===== CARRO INIMIGO ===== */
 #inimigo {
-    background: #ff0066;
-    color: #ff0066;
     left: 30px;
     top: -70px;
+    background: #ff0066;
+    color: #ff0066;
+    border-color: #ff9abc;
+    border-radius: 7px 7px 4px 4px;
 }
 
+/* Vidro do inimigo */
+#inimigo::before {
+    background: #222;
+    border-color: #ffb0cc;
+}
+
+/* ===== BOTÕES ===== */
 button {
     padding: 12px 20px;
+    margin: 5px;
     font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
+    color: #202035;
+    background: #00ff88;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 #009955;
+    transition: transform 0.1s;
+}
+
+button:hover {
+    background: #66ffbb;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #009955;
+}
+
+/* ===== MENSAGEM DE COLISÃO ===== */
+#mensagem {
+    color: #ff4d79;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* ===== TELAS MENORES ===== */
+@media (max-width: 360px) {
+    #pista {
+        transform: scale(0.9);
+        transform-origin: top center;
+        margin-bottom: -20px;
+    }
+
+    button {
+        padding: 10px 14px;
+        font-size: 18px;
+    }
 }
