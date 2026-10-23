@@ -1,74 +1,200 @@
 
-/* ===== ESTILO GERAL ===== */
-body {
-    background: #202035;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 15px;
+/* ========================================
+   UNO RACING — VISUAL RENOVADO
+======================================== */
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 24px 12px 35px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #f5f7ff;
+
+    background:
+        radial-gradient(ellipse at top, #243b63 0%, transparent 60%),
+        linear-gradient(160deg, #101522, #080b12 75%);
+}
+
+/* ===== TÍTULO ===== */
+
 h1 {
-    color: #00ff88;
-    text-shadow: 0 0 10px #00ff88;
+    margin: 8px 0 10px;
+
+    font-size: clamp(30px, 7vw, 42px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #65ffb5;
+    text-shadow:
+        0 0 10px #36ffad66,
+        0 0 28px #36ffad33;
 }
 
 p {
-    font-size: 16px;
+    color: #bdc9dc;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-/* ===== PISTA ===== */
+/* ===== PLACAR ===== */
+
+body > p:nth-of-type(2) {
+    display: inline-block;
+    margin: 8px 4px;
+    padding: 12px 18px;
+
+    background: #171f30;
+    border: 1px solid #34445c;
+    border-radius: 12px;
+
+    color: #65ffb5;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#pontos,
+#nivel,
+#carros {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+/* ===== CONTADOR DE CARROS ===== */
+
+body > p:nth-of-type(3) {
+    margin: 8px 0 18px;
+    color: #aab8ce;
+    font-weight: bold;
+}
+
+/* ===== PISTA DE CORRIDA ===== */
+
 #pista {
     width: 300px;
-    height: 400px;
-    background: #222;
-    border: 3px solid cyan;
-    margin: 20px auto;
+    height: 440px;
     position: relative;
+    isolation: isolate;
     overflow: hidden;
-    box-shadow: 0 0 15px #00ffff55;
+
+    margin: 20px auto 24px;
+
+    background:
+        /* Reflexo da iluminação */
+        linear-gradient(
+            90deg,
+            #151b26 0%,
+            #303846 5%,
+            #242b36 12%,
+            #202631 88%,
+            #303846 95%,
+            #151b26 100%
+        );
+
+    border: 4px solid #53647d;
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 0 4px #101725,
+        0 0 30px #000000aa,
+        0 0 20px #5c83ba22;
 }
 
-/* Linhas das faixas */
+/* Bordas laterais da pista */
+#pista::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff08,
+            transparent 25%,
+            #00000022
+        );
+
+    border-left: 5px solid #e7edf0;
+    border-right: 5px solid #e7edf0;
+}
+
+/* ===== FAIXAS DA ESTRADA ===== */
+
 .linha {
     position: absolute;
-    width: 2px;
-    height: 100%;
-    background: #666;
     top: 0;
+    height: 100%;
+    width: 4px;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        #e5e9ef 0px,
+        #e5e9ef 25px,
+        transparent 25px,
+        transparent 45px
+    );
+
+    opacity: 0.65;
+    animation: estrada 0.45s linear infinite;
 }
 
 .linha1 {
-    left: 100px;
+    left: 97px;
 }
 
 .linha2 {
-    left: 200px;
+    left: 197px;
 }
 
-/* ===== ESTILO DOS CARROS ===== */
+@keyframes estrada {
+    from {
+        background-position-y: 0;
+    }
+
+    to {
+        background-position-y: 45px;
+    }
+}
+
+/* ===== CARROS — FORMATO PRESERVADO ===== */
+
 .carro {
     width: 44px;
     height: 70px;
+
     position: absolute;
     box-sizing: border-box;
+
     border: 2px solid #aaa;
     border-radius: 7px 7px 4px 4px;
-    box-shadow: 0 2px 5px #000;
+
+    box-shadow:
+        0 3px 6px #000a,
+        inset 0 0 4px #ffffff44;
 }
 
-/* ===== FIAT UNO MILLE DO JOGADOR ===== */
+/* ===== UNO MILLE BRANCO ===== */
+
 #jogador {
     left: 128px;
     top: 310px;
+
     color: white;
 
     background:
         linear-gradient(
             to bottom,
-            #999 0px,
-            #ddd 4px,
+            #888 0px,
+            #e7e7e7 4px,
             transparent 4px,
             transparent 63px,
             #bbb 63px,
@@ -85,18 +211,25 @@ p {
             #777 42px
         );
 
-    border-color: #aaa;
+    border-color: #c9d2df;
     border-radius: 6px 6px 4px 4px;
+
+    box-shadow:
+        0 0 12px #ffffff22,
+        0 4px 7px #000b;
 }
 
-/* Vidros do Fiat Uno */
+/* Vidros do Uno */
 #jogador::before {
     content: "";
     position: absolute;
+
     top: 12px;
     left: 5px;
+
     width: 30px;
     height: 17px;
+
     box-sizing: border-box;
 
     background: linear-gradient(
@@ -115,69 +248,131 @@ p {
 }
 
 /* ===== CARRO INIMIGO VERMELHO ===== */
+
 #inimigo {
     left: 30px;
     top: -70px;
 
-    background: #ff0000;
-    color: #ff0000;
+    background: linear-gradient(
+        to right,
+        #bd0000,
+        #ff2020 25%,
+        #e60000 75%,
+        #a90000
+    );
+
+    color: #ff2020;
     border-color: #ff7777;
 
     border-radius: 7px 7px 4px 4px;
+
+    box-shadow:
+        0 0 12px #ff000033,
+        0 3px 7px #000b;
 }
 
-/* Vidro do carro inimigo */
+/* Vidro do inimigo */
 #inimigo::before {
-    background: #222;
+    background: linear-gradient(
+        135deg,
+        #4b5968,
+        #151a22 65%,
+        #687786
+    );
+
     border-color: #ff7777;
 }
 
 /* ===== BOTÕES ===== */
+
 button {
-    padding: 12px 20px;
+    min-width: 66px;
+    padding: 13px 19px;
     margin: 5px;
 
-    font-size: 20px;
-    font-weight: bold;
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 900;
+
+    color: #f5f7ff;
+    background: linear-gradient(
+        180deg,
+        #293951,
+        #172337
+    );
+
+    border: 1px solid #526985;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 0 #0a111d;
 
     cursor: pointer;
-    color: #202035;
-    background: #00ff88;
-
-    border: none;
-    border-radius: 8px;
-
-    box-shadow: 0 3px 0 #009955;
-    transition: transform 0.1s;
+    transition:
+        transform 0.12s ease,
+        filter 0.12s ease;
 }
 
 button:hover {
-    background: #66ffbb;
+    filter: brightness(1.25);
 }
 
 button:active {
-    transform: translateY(2px);
-    box-shadow: 0 1px 0 #009955;
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #0a111d;
+}
+
+/* Botões direcionais em verde */
+button:nth-of-type(1),
+button:nth-of-type(2) {
+    color: #071810;
+    background: linear-gradient(
+        180deg,
+        #8affc7,
+        #35dc91
+    );
+
+    border-color: #a0ffd4;
+    box-shadow: 0 4px 0 #168353;
+}
+
+/* Botão reiniciar */
+button:nth-of-type(3) {
+    background: linear-gradient(
+        180deg,
+        #ff626c,
+        #d9273c
+    );
+
+    border-color: #ff9299;
+    box-shadow: 0 4px 0 #8b1828;
 }
 
 /* ===== MENSAGEM DE COLISÃO ===== */
+
 #mensagem {
-    color: #ff4d79;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 15px;
+    max-width: 320px;
+    margin: 18px auto;
+
+    color: #ff737d;
+    font-size: 16px;
+    font-weight: 900;
 }
 
-/* ===== TELAS PEQUENAS ===== */
+/* ===== RESPONSIVIDADE ===== */
+
 @media (max-width: 360px) {
+    body {
+        padding: 15px 6px 25px;
+    }
+
     #pista {
-        transform: scale(0.9);
-        transform-origin: top center;
-        margin-bottom: -20px;
+        width: min(300px, 94vw);
+        height: 420px;
     }
 
     button {
-        padding: 10px 14px;
-        font-size: 18px;
+        min-width: 58px;
+        padding: 11px 14px;
+        font-size: 17px;
     }
 }
